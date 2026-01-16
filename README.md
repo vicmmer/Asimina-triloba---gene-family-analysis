@@ -91,9 +91,9 @@ Scripts are numbered in the recommended execution order.
   - Identifies gene families that have undergone significant size changes along the pawpaw
 
 - ### 6. Phylogenetic dating
-5.config.sh 
+6.config.sh 
   - Generates the configuration file for treePL 
-  - Run with: treePL config.cfg
+  - Run with: treePL 6.config.cfg
 
 - ### 7. GO enrichment analysis (topGO)
 7a.topgoprep.sh 

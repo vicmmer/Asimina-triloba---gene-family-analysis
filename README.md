@@ -77,6 +77,8 @@ Scripts are numbered in the recommended execution order.
   - Filters interpro output to remove empty files and also transposable-element-associated annotations
 
 - ### 4. Gene family overlap visualization
+4.Upset_PrepCafe.R
+  - Prepares inopuf for cafe
 4.make_upset_filtered.R 
   - Generates UpSet plots highlighting: 
     - Pawpaw-specific families

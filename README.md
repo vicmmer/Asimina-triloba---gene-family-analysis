@@ -2,7 +2,8 @@
 
 This repository contains scripts and workflows used to analyze **gene family evolution** across *Annonaceae* and related magnoliid taxa, with a **primary focus on pawpaw (*Asimina triloba*)–specific gene family changes**.
 
-The workflow integrates **genome completeness assessment, orthogroup inference, protein functional annotation, gene family filtering, phylogenetic dating, and GO enrichment analyses**, enabling functional interpretation of pawpaw-specific evolutionary patterns.
+The workflow integrates genome completeness assessment, orthogroup inference, functional annotation of orthogroup proteins (via InterProScan), gene family filtering, gene family evolution modeling (CAFE), phylogenetic dating (treePL), and GO enrichment analyses (topGO), enabling functional interpretation of pawpaw-specific gene family changes.
+
 
 ---
 

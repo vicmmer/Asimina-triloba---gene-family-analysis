@@ -64,10 +64,39 @@ Scripts are numbered in the recommended execution order.
 
 - ### 2. Orthogroup inference
 2.orthofinder.sh
-Runs Orthofinder to identify orthougroups in taxa
+  -Runs Orthofinder to identify orthougroups in taxa
 2b.prepare_interproinput.sh
-Prepares and puts Orthofinder output in ready-to-go form for functional annotation
+  -Prepares and puts Orthofinder output in ready-to-go form for functional annotation
 
 - ### 3. Functional Annotation
-3. interproscan.sh 
+3.interproscan.sh
+  -Runs InterproScan on orthogroup protein sets
+3b.filter_interpro_output.sh
+  -Filters interpro output to remove empty files and also transposable-element-associated annotations
+
+- ### 4. Gene family overlap visualization
+4.make_upset_filtered.R 
+  -Generates UpSet plots highlighting: 
+    - Pawpaw-specific families
+    -Gene families shared with other Annonaceae 
+    -Gene families conserved across magnoliids 
+
+- ### 5. Gene family evolution modeling (CAFE)
+5.cafe.sh
+  -Estimates gene family expansion and contraction across the taxa using
+  -Identifies gene families that have undergone significant size changes along the pawpaw
+
+- ### 6. Phylogenetic dating
+5.config.sh 
+  - Generates the configuration file for treePL 
+  - Run with: treePL config.cfg
+
+- ### 7. GO enrichment analysis (topGO)
+7a.topgoprep.sh 
+  - Prepapares input files for topgo by
+    - Linking gene IDs to GO terms derived from Interpro scan
+    - formats gene-to-GO mappings required for enrichment analysis
+7b.topgo.R
+  -Performs GO enrichment analysis using topGO R package to identify biologicaal processed, molecular functions, and cellular components overrepresented in pawppaw specific or expanded gene families
+
 

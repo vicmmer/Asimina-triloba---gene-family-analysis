@@ -57,14 +57,17 @@ Scripts are numbered in the recommended execution order.
 ```bash
 0.download_accessions.sh
 
-### 1. Genome Completeness
+- ### 1. Genome Completeness
 1.busco.sh
 1b.busco_summaries.sh
-Runs BUSCO an generates completeness summaries across species
+  -Runs BUSCO an generates completeness summaries across species
 
-### 2. Orthogroup inference
+- ### 2. Orthogroup inference
 2.orthofinder.sh
 Runs Orthofinder to identify orthougroups in taxa
 2b.prepare_interproinput.sh
 Prepares and puts Orthofinder output in ready-to-go form for functional annotation
+
+- ### 3. Functional Annotation
+3. interproscan.sh 
 

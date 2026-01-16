@@ -100,6 +100,7 @@ Scripts are numbered in the recommended execution order.
   - Prepapares input files for topgo by
     - Linking gene IDs to GO terms derived from Interpro scan
     - formats gene-to-GO mappings required for enrichment analysis
+      
 7b.topgo.R
   - Performs GO enrichment analysis using topGO R package to identify biologicaal processed, molecular functions, and cellular components overrepresented in pawppaw specific or expanded gene families
 

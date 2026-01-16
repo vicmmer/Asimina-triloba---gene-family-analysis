@@ -54,7 +54,7 @@ These filtering steps are critical for accurately identifying **pawpaw-specific 
 Scripts are numbered in the recommended execution order.
 
 - ### 0. Data preparation
-```bash
+
 0.download_accessions.sh
 
 - ### 1. Genome Completeness

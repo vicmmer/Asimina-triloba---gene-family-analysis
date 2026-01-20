@@ -6,21 +6,20 @@ LINEAGE="embryophyta_odb10"
 MODE="protein"
 THREADS=30
 
-# Parent results folder
+# Input + output folders
+SEQ_DIR="protein_sequences"
 OUT_PARENT="busco_results"
+
 mkdir -p "$OUT_PARENT"
 
-# Loop over each FASTA file
-# (handles *.fa and *.fasta; skips if none)
-for fasta in *.fa *.fasta; do
-    [ -e "$fasta" ] || continue   # skip pattern when it matches nothing
+# Loop over each FASTA file in protein_sequences
+for fasta in "$SEQ_DIR"/*.fa "$SEQ_DIR"/*.fasta; do
+    [ -e "$fasta" ] || continue
 
-    # Get file name only
+    # Get file name only (strip path)
     fname=$(basename "$fasta")
 
-    # Strip extension (everything after the first dot)
-    # e.g. Annona_cherimola.fa            -> Annona_cherimola
-    #      Annona_muricata_annotated.fa   -> Annona_muricata_annotated
+    # Strip extension
     BASENAME="${fname%%.*}"
 
     echo "Running BUSCO on $fasta (basename: $BASENAME)..."

@@ -109,3 +109,4 @@ Scripts are numbered in the recommended execution order.
 
 ##Feedback: 
 -show example of how to run each script. Include input / expected output in each script
+-add n readme or folder , a place where i can have figures 

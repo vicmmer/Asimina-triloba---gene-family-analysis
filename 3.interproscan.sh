@@ -1,40 +1,40 @@
+# Purpose: Run InterProScan on a single cleaned protein FASTA (from interproscan_input/) and write a TSV result to interproscan_output using the same basename.
+
 #!/bin/bash
+set -e
 
-# Input folder containing .fa files
-input_dir=/home/vmartinez/genefamily/orthofinder/Results_Dec03/Orthogroup_Sequences
+INPUT_DIR="interproscan_input"
+OUTPUT_DIR="interproscan_output"
+IPS_PATH="/home/vmartinez/my_interproscan/interproscan-5.75-106.0/interproscan.sh"
 
-# Directory where this script is located
-script_dir="$(cd "$(dirname "$0")" && pwd)"
+JOBS=40   # number of parallel jobs
+CPU=1     # CPUs per InterProScan run
 
-# Output folder relative to the script directory
-output_dir="${script_dir}/interproscan_output"
-mkdir -p "$output_dir"
+mkdir -p "$OUTPUT_DIR"
 
-# Path to InterProScan
-ips_path="/home/vmartinez/my_interproscan/interproscan-5.75-106.0/interproscan.sh"
+echo "=== Running InterProScan with GNU parallel ==="
+echo "Input: $INPUT_DIR"
+echo "Jobs:  $JOBS"
+echo
 
-# Loop over all .fa files in input_dir
-for file in "$input_dir"/*.fa; do
-    # Skip if no .fa files are found
-    [ -e "$file" ] || { echo "No .fa files found in $input_dir"; exit 1; }
+ls "$INPUT_DIR"/*.fa | parallel -j "$JOBS" --eta --verbose '
+  file={}
+  base=$(basename "$file" .fa)
+  out="'"$OUTPUT_DIR"'/${base}.tsv"
 
-    basename=$(basename "$file" .fa)
-    outfile="${output_dir}/${basename}.tsv"
+  '"$IPS_PATH"' \
+    -i "$file" \
+    -f tsv \
+    -appl Pfam,PANTHER \
+    --iprlookup \
+    --goterms \
+    -cpu '"$CPU"' \
+    -o "$out"
+'
 
-    echo "Running InterProScan on: $file"
+echo " InterProScan finished. Outputs in: $OUTPUT_DIR "
 
-    "$ips_path" \
-        -i "$file" \
-        -f tsv \
-        -appl Pfam,PANTHER \
-        --iprlookup \
-        --goterms \
-        -cpu 1 \
-        -o "$outfile"
-done
 
-#Note: run inside a screen: 
-#screen -L -S interproscan 
-#find orthofinder/Results_Dec03/Orthogroup_Sequences \
-#  -maxdepth 1 -type f -name '*.fa' -print0 \
-# | parallel -0 -j 40 --eta --verbose ./run_interproscan.sh {}
+
+
+

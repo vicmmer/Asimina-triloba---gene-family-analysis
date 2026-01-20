@@ -10,7 +10,7 @@ for dir in "$BUSCO_DIR"/*; do
   [ -d "$dir" ] || continue
   species=$(basename "$dir")
 
-  summary=$(ls "$dir"/short_summary*.txt 2>/dev/null | head -n 1)
+  summary=$(ls -t "$dir"/short_summary*.txt 2>/dev/null | head -n 1)
   if [ -z "$summary" ]; then
     echo "=== No BUSCO summary for $species (skipping) ==="
     continue

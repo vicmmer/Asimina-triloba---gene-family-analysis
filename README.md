@@ -40,6 +40,8 @@ All scripts are intended to be run sequentially unless otherwise noted or can al
 
 ## Important Notes & Caveats
 
+to edit Vic: put info on versions /prerequisites needed to run the scripts 
+
 - **OrthoFinder output must be manually cleaned** prior to functional annotation.
 - `interproscan.sh` **must be run inside the directory containing the cleaned OrthoFinder output**.
 - After InterProScan completes, `filter_interpro_output.sh` **must be run** to:
